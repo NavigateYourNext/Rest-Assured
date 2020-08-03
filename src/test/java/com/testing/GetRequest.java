@@ -17,8 +17,6 @@ public class GetRequest
 	@Test
 	void getWeatherDetails()
 	{
-		String pageno = "2";
-		
 		//Specify base URI
 		RestAssured.baseURI = "https://reqres.in/api/users";
 		
@@ -26,7 +24,7 @@ public class GetRequest
 		RequestSpecification httpRequest = RestAssured.given();
 		
 		//Response Object
-		Response response = httpRequest.request(Method.GET,"/page="+pageno);
+		Response response = httpRequest.request(Method.GET,"/2");
 		
 		//Print the response
 		String responseBody = response.getBody().asString();
@@ -60,7 +58,7 @@ public class GetRequest
 		System.out.println("ID is: "+jsonPathh.get("id"));
 		System.out.println("Email Is: "+jsonPathh.get("email"));
 		
-		//Basic Authentication (write this code before given() method call)
+		//Basic Authentication (write this code before given())
 		PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
 		authScheme.setUserName("test");
 		authScheme.setPassword("test");
